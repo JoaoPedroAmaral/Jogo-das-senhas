@@ -18,7 +18,7 @@ RULES = [
     "O segundo dígito deve ser menor que o quarto",
     "A senha deve conter pelo menos um múltiplo de 3",
     "A senha deve conter um número maior que 7",
-    "A soma dos três primeiros dígitos deve ser um número par",
+    "A soma dos dígitos deve ser um número par",
     "Nenhum dígito pode ser 0",
     "A multiplicação dos dígitos deve ser maior que 50",
     "A soma dos dois últimos dígitos deve ser um número primo",
@@ -56,11 +56,11 @@ def validarSenha(password, hints):
         valid = False
     if "A senha deve conter um número maior que 7" in hints and not any(d > 7 for d in digits):
         valid = False
-    if "A soma dos três primeiros dígitos deve ser um número par" in hints and sum(digits[:3]) % 2 != 0:
+    if "A soma dos dígitos deve ser um número par" in hints and sum(digits[:3]) % 2 != 0:
         valid = False
     if "Nenhum dígito pode ser 0" in hints and 0 in digits:
         valid = False
-    if "A multiplicação dos dígitos deve ser maior que 50" in hints and (digits[0] * digits[1] * digits[2] * digits[3] * digits[4]) <= 50:
+    if "A multiplicação dos dígitos deve ser maior que 50" in hints and (digits[0] * digits[1] * digits[2]) <= 50:
         valid = False
     if "A soma dos dois últimos dígitos deve ser um número primo" in hints:
         last_two_sum = digits[-2] + digits[-1]
