@@ -15,7 +15,7 @@ RULES = [
     "A senha deve ter pelo menos um número primo",
     "A senha deve conter pelo menos dois números ímpares",
     "A diferença entre o maior e o menor número deve ser pelo menos 4",
-    "O segundo dígito deve ser menor que o quarto",
+    "O segundo dígito deve ser menor que o ultimo",
     "A senha deve conter pelo menos um múltiplo de 3",
     "A senha deve conter um número maior que 7",
     "A soma dos dígitos deve ser um número par",
@@ -40,7 +40,7 @@ def validarSenha(password, hints):
         valid = False
     if "A senha deve terminar em um número ímpar" in hints and digits[-1] % 2 == 0:
         valid = False
-    if "A senha não pode conter números repetidos" in hints and len(set(digits)) < 5:
+    if "A senha não pode conter números repetidos" in hints and len(set(digits)) < 3:
         valid = False
     if "O primeiro dígito deve ser maior que o último" in hints and digits[0] <= digits[-1]:
         valid = False
@@ -56,7 +56,7 @@ def validarSenha(password, hints):
         valid = False
     if "A senha deve conter um número maior que 7" in hints and not any(d > 7 for d in digits):
         valid = False
-    if "A soma dos dígitos deve ser um número par" in hints and sum(digits[:3]) % 2 != 0:
+    if "A soma dos dígitos deve ser um número par" in hints and sum(digits) % 2 != 0:
         valid = False
     if "Nenhum dígito pode ser 0" in hints and 0 in digits:
         valid = False
